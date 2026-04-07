@@ -317,13 +317,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 5
   <h2 class="sec-title">Wall of Supporters</h2>
   <p class="sec-sub" style="margin-bottom:48px;">These legends believed in RaceLab Arena from day one. Every contribution goes directly into the build. 🙌</p>
   <div style="overflow-x:auto;overflow-y:hidden;white-space:nowrap;padding:8px 0 16px;margin:0 auto 40px;scrollbar-width:thin;scrollbar-color:rgba(232,25,44,0.3) transparent;">
-    <div style="display:inline-flex;gap:12px;padding:0 20px;">
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:40px;padding:10px 20px;font-size:0.88rem;font-weight:600;color:var(--lgrey);display:inline-flex;align-items:center;gap:8px;white-space:nowrap;"><span style="color:var(--red);">🔋</span> @lor_mir_</div>
-      <div style="background:var(--bg2);border:2px solid var(--red);border-radius:40px;padding:10px 20px;font-size:0.88rem;font-weight:600;color:var(--white);display:inline-flex;align-items:center;gap:8px;white-space:nowrap;"><span style="color:var(--red);">🏆</span> @chelle.ventures</div>
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:40px;padding:10px 20px;font-size:0.88rem;font-weight:600;color:var(--lgrey);display:inline-flex;align-items:center;gap:8px;white-space:nowrap;"><span style="color:var(--red);">⚡</span> @Inluv4adventure</div>
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:40px;padding:10px 20px;font-size:0.88rem;font-weight:600;color:var(--lgrey);display:inline-flex;align-items:center;gap:8px;white-space:nowrap;"><span style="color:var(--red);">⚡</span> @arsalanahmed97</div>
-    </div>
-  </div>
+    <div id="supporters-list" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px;"></div>
   <p style="font-size:0.78rem;color:rgba(255,255,255,0.25);">🔋 Charged the battery &nbsp;·&nbsp; ⚡ Upgraded the build &nbsp;·&nbsp; 🏆 Race sponsor</p>
 </section>
 
@@ -477,7 +471,45 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 5
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+async function loadSupporters() {
+  try {
+    const res = await fetch(
+      "https://szfjzymqmiayvqkhkpuk.supabase.co/rest/v1/supporters?select=username,amount,tier,created_at&order=created_at.desc",
+      {
+        headers: {
+          apikey: "PASTE_YOUR_PUBLISHABLE_KEY_HERE",
+          Authorization: "Bearer PASTE_YOUR_PUBLISHABLE_KEY_HERE"
+        }
+      }
+    );
 
+    const supporters = await res.json();
+    const container = document.getElementById("supporters-list");
+
+    if (!supporters.length) {
+      container.innerHTML = "<p style='color:white;'>No supporters yet</p>";
+      return;
+    }
+
+    container.innerHTML = supporters.map((s) => {
+      const icon =
+        s.tier === "Race sponsor" ? "🏆" :
+        s.tier === "Upgraded the build" ? "⚡" :
+        s.tier === "Charged the battery" ? "🔋" : "🔥";
+
+      return `
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:40px;padding:10px 20px;font-size:0.88rem;font-weight:600;color:var(--white);display:inline-flex;gap:8px;align-items:center;">
+          <span>${icon}</span>
+          <span>@${s.username}</span>
+        </div>
+      `;
+    }).join("");
+
+  } catch (err) {
+    console.error("error loading supporters", err);
+  }
+}
+  
   function doRegister() {
     const fn = document.getElementById('r-fn').value.trim();
     const em = document.getElementById('r-em').value.trim();
@@ -502,6 +534,38 @@ Message:
     document.querySelector('#book .sbtn').style.display = 'none';
     document.getElementById('book-ok').style.display = 'block';
   }
+  async function loadSupporters() {
+  try {
+    const res = await fetch(
+      "https://szfjzymqmiayvqkhkpuk.supabase.co/rest/v1/supporters?select=username,amount,tier,created_at&order=created_at.desc",
+      {
+        headers: {
+          apikey: "sb_publishable_GszaU39WzoDJDzC5a95NRA_Cm17SO74",
+          Authorization: "Bearer sb_publishable_GszaU39WzoDJDzC5a95NRA_Cm17SO74"
+        }
+      }
+    );
+
+    const supporters = await res.json();
+    const container = document.getElementById("supporters-list");
+
+    if (!supporters.length) {
+      container.innerHTML = "<p style='color:white;'>No supporters yet</p>";
+      return;
+    }
+
+    container.innerHTML = supporters.map((s) => {
+      return `
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:40px;padding:10px 20px;font-size:0.88rem;font-weight:600;color:var(--white);display:inline-flex;gap:8px;align-items:center;">
+          🔥 @${s.username}
+        </div>
+      `;
+    }).join("");
+
+  } catch (err) {
+    console.error("error loading supporters", err);
+  }
+  loadSupporters();
   function doContact() {
     const n = document.getElementById('c-name').value.trim();
     const e = document.getElementById('c-email').value.trim();
