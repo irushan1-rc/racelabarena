@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — RaceLab Arena</title>
+<meta name="description" content="Frequently asked questions about RaceLab Arena — sessions, merch, shipping, payments and more.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --red: #e8192c; --red-dark: #b8111f;
+  --bg: #0a0a0a; --bg2: #111; --bg3: #1a1a1a;
+  --white: #fff; --grey: #888; --lgrey: #ccc;
+  --border: rgba(255,255,255,0.08);
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 48px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(10,10,10,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { display:flex; align-items:center; text-decoration:none; overflow:hidden; height:64px; }
+.nav-btn { display:inline-flex; align-items:center; padding:10px 22px; background:var(--red); color:var(--white); font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; border-radius:4px; }
+.nav-btn:hover { background: var(--red-dark); }
+.faq-hero { padding: 100px 5% 50px; text-align: center; }
+.eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+.hero-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(3rem, 8vw, 5rem); text-transform: uppercase; line-height: 1; margin-bottom: 16px; }
+.hero-sub { font-size: 1rem; color: var(--grey); max-width: 500px; margin: 0 auto; }
+.tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 36px 5% 0; }
+.tab-btn { padding: 8px 20px; background: var(--bg2); border: 1px solid var(--border); border-radius: 40px; font-size: 0.8rem; font-weight: 600; color: var(--grey); cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+.tab-btn:hover { border-color: rgba(232,25,44,0.4); color: var(--white); }
+.tab-btn.active { background: var(--red); border-color: var(--red); color: var(--white); }
+.faq-wrap { max-width: 760px; margin: 0 auto; padding: 48px 5% 80px; }
+.faq-category { margin-bottom: 56px; }
+.cat-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.4rem; text-transform: uppercase; color: var(--red); margin-bottom: 20px; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-question { width: 100%; text-align: left; padding: 20px 0; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; font-weight: 600; color: var(--white); font-family: 'Inter', sans-serif; gap: 16px; transition: color 0.2s; }
+.faq-question:hover { color: var(--red); }
+.faq-icon { width: 22px; height: 22px; flex-shrink: 0; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.2s; }
+.faq-answer { display: none; padding: 0 0 20px; font-size: 0.88rem; color: var(--lgrey); line-height: 1.8; }
+.faq-answer a { color: var(--red); text-decoration: none; }
+.faq-answer a:hover { text-decoration: underline; }
+.faq-cta { text-align: center; padding: 60px 5%; border-top: 1px solid var(--border); }
+.faq-cta h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 4vw, 2.5rem); text-transform: uppercase; margin-bottom: 12px; }
+.faq-cta p { color: var(--grey); font-size: 0.9rem; margin-bottom: 28px; }
+.btn-r { display:inline-flex; align-items:center; gap:8px; padding:14px 30px; background:var(--red); color:var(--white); font-size:0.85rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; text-decoration:none; border-radius:4px; }
+.btn-r:hover { background: var(--red-dark); }
+footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 28px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--grey); flex-wrap: wrap; gap: 12px; }
+@media (max-width: 700px) { nav { padding: 0 20px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <img src="data:image/png;base64,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" alt="RaceLab Arena" style="height:120px;width:auto;filter:drop-shadow(0 0 8px rgba(232,25,44,0.35));margin:-28px 0;">
+  </a>
+  <a href="index.html#book" class="nav-btn">Register Interest ›</a>
+</nav>
+
+<div class="faq-hero">
+  <p class="eyebrow">Got Questions?</p>
+  <h1 class="hero-title">We've Got<br><span style="color:var(--red);">Answers.</span></h1>
+  <p class="hero-sub">Everything you need to know about RaceLab Arena — sessions, merch, shipping and more.</p>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-section="sessions">🏁 Sessions</button>
+  <button class="tab-btn" data-section="merch">🛒 Merch & Shipping</button>
+  <button class="tab-btn" data-section="experience">🎮 The Experience</button>
+  <button class="tab-btn" data-section="payment">💳 Payment</button>
+  <button class="tab-btn" data-section="general">💬 General</button>
+</div>
+
+<div class="faq-wrap">
+
+  <div class="faq-category" id="sessions">
+    <div class="cat-title">🏁 Sessions</div>
+    <div class="faq-item">
+      <button class="faq-question">When will sessions be available? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">We're currently in the final stages of development and running backyard and private events. We don't have a fixed venue yet — instead we come to you. <a href="index.html#book">Register your interest</a> to be first in line and we'll reach out when we're ready to take bookings in your area.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How much does a session cost? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Pricing is being finalised and will be updated here soon. <a href="index.html#book">Register your interest</a> and we'll be in touch with full details when they're ready.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Where will sessions be held? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">For now RaceLab Arena is fully mobile — we come to you. If you have the space, we'll bring the full setup. Down the track we're planning a fixed venue in Perth, but right now it's all about getting out there and making it happen. <a href="index.html#book">Get in touch</a> and let us know what you have in mind.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How many people can do a session at once? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">We currently run with 1 rig, so it's one driver at a time — but everyone can watch and take turns. We're mobile and set up at your event or space. Whether it's a backyard session with mates, a birthday party, or a corporate event, <a href="index.html#book">get in touch</a> and we'll work something out.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Do I need any experience to drive? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">None at all. If you can hold a steering wheel, you can drive. The system is designed to be intuitive for first-timers and fun for experienced sim racers. We'll walk you through everything before you start.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Is there an age limit? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">We recommend a minimum age of 10 years old. Kids under 16 must be accompanied by a parent or guardian. No upper age limit — if you want to drive, we want you there.</div>
+    </div>
+  </div>
+
+  <div class="faq-category" id="merch">
+    <div class="cat-title">🛒 Merch & Shipping</div>
+    <div class="faq-item">
+      <button class="faq-question">Do you offer free shipping? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes — free worldwide shipping on all Stay Driven orders. No minimum spend, no hidden costs. Ever.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How long does shipping take? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Shipping times vary by product:<br><br>
+        👕 <strong>Tees, caps, accessories</strong> — approx. 1–2 weeks<br>
+        🎒 <strong>Duffel bags</strong> — approx. 3–4 weeks (handcrafted to order)<br><br>
+        All items are made to order and assembled in AU. Worth the wait.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Where do you ship to? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">We ship worldwide — Australia, New Zealand, US, UK, EU, Asia and beyond. If you can receive a package, we can get it to you.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Can I return or exchange my order? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Because all items are made to order, we don't accept returns for change of mind. However if your item arrives damaged or incorrect, contact us at <a href="mailto:racelab.arena@outlook.com">racelab.arena@outlook.com</a> and we'll sort it out immediately.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">What sizes are available? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Sizes vary by product. The Stay Driven Duffel Bag is available in Small and Large. Upcoming apparel will be available in S, M, L, XL and XXL. Size guides are on each product page.</div>
+    </div>
+  </div>
+
+  <div class="faq-category" id="experience">
+    <div class="cat-title">🎮 The Experience</div>
+    <div class="faq-item">
+      <button class="faq-question">What exactly is RaceLab Arena? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">RaceLab Arena is Perth's first real RC racing experience. You sit behind a sim racing wheel, look through a live FPV camera feed, and control a real RC car on a real track. It's not a simulation — the car is real, the speed is real, and the experience is unlike anything else.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">What does the FPV feed look like? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">The FPV camera streams live 1080p HD video at low latency directly to a screen in front of you, putting you in the driver's seat of the car. You see exactly what the car sees in real time.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Is the system safe? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes. The RC car operates within a controlled track area. All systems are custom designed and tested. The car is small enough to be fully controlled at all times.</div>
+    </div>
+  </div>
+
+  <div class="faq-category" id="payment">
+    <div class="cat-title">💳 Payment</div>
+    <div class="faq-item">
+      <button class="faq-question">What payment methods do you accept? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Merch orders are processed via Stripe — we accept all major credit and debit cards including Visa, Mastercard and Amex. Apple Pay and Google Pay are also supported.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Is my payment information secure? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes. All payments are processed by Stripe — one of the world's most trusted payment platforms. We never store your card details. All transactions are encrypted and PCI compliant.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Can I get a refund? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Booking and refund details will be confirmed when we open for events. <a href="index.html#book">Register your interest</a> and we'll send through all the details when we're ready.</div>
+    </div>
+  </div>
+
+  <div class="faq-category" id="general">
+    <div class="cat-title">💬 General</div>
+    <div class="faq-item">
+      <button class="faq-question">How can I stay updated? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Follow us on <a href="https://www.instagram.com/racelab.arena" target="_blank">Instagram</a> and <a href="https://www.tiktok.com/@racelab.arena" target="_blank">TikTok</a> @racelab.arena, or <a href="index.html#book">register your interest</a> on the website to get notified directly.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Can I partner with or sponsor RaceLab Arena? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes! We're open to hobby shop partnerships, RC track collaborations and brand sponsorships. <a href="index.html#book">Get in touch</a> via the interest form and select your partnership type — we'll get back to you.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Who built RaceLab Arena? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">RLA was built by one person in Perth, WA — from the ground up. Every component was researched, designed and assembled in-house. Read the full story on the <a href="about.html">About page</a>.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">I have a question that's not listed here. <span class="faq-icon">+</span></button>
+      <div class="faq-answer">No worries — reach out at <a href="mailto:racelab.arena@outlook.com">racelab.arena@outlook.com</a> or use the <a href="index.html#book">contact form</a>. We'll get back to you as soon as possible.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="faq-cta">
+  <h2>Still Have Questions?</h2>
+  <p>Reach out and we'll get back to you.</p>
+  <a href="index.html#book" class="btn-r">Get in Touch ›</a>
+</div>
+
+<footer>
+  <span>© 2026 RaceLab Arena. All rights reserved. Perth, WA.</span>
+  <a href="index.html" style="color:var(--lgrey);text-decoration:none;font-weight:600;">← Back to main site</a>
+</footer>
+
+<script>
+// Accordion
+var questions = document.querySelectorAll('.faq-question');
+for (var i = 0; i < questions.length; i++) {
+  questions[i].addEventListener('click', function() {
+    var answer = this.nextElementSibling;
+    var icon = this.querySelector('.faq-icon');
+    var isOpen = answer.style.display === 'block';
+    // Close all
+    for (var j = 0; j < questions.length; j++) {
+      questions[j].nextElementSibling.style.display = 'none';
+      questions[j].querySelector('.faq-icon').textContent = '+';
+      questions[j].style.color = '';
+    }
+    // Open this one if it was closed
+    if (!isOpen) {
+      answer.style.display = 'block';
+      icon.textContent = '×';
+      this.style.color = 'var(--red)';
+    }
+  });
+}
+
+// Tabs
+var tabs = document.querySelectorAll('.tab-btn');
+for (var k = 0; k < tabs.length; k++) {
+  tabs[k].addEventListener('click', function() {
+    var sectionId = this.getAttribute('data-section');
+    var section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    for (var l = 0; l < tabs.length; l++) {
+      tabs[l].classList.remove('active');
+    }
+    this.classList.add('active');
+  });
+}
+</script>
+</body>
+</html>
