@@ -1,9 +1,6 @@
 (function () {
   "use strict";
 
-  var SUPPORTERS_ENDPOINT = "https://szfjzymqmiayvqkhkpuk.supabase.co/rest/v1/supporters?select=username,amount,tier,created_at&order=created_at.desc";
-  var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6Zmp6eW1xbWlheXZxa2hrcHVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NjE0MTcsImV4cCI6MjA5MTEzNzQxN30.4ekWPf_Ic4PoLgBdULXiseHWmPJ4sq3s2LcdkSQUhR8";
-
   var SITE_LINKS = [
     ["Home", "index.html"],
     ["Experience", "experience.html"],
@@ -130,8 +127,8 @@
       var groups = [
         ["Experience", [["Experience", "experience.html"], ["How it works", "how-it-works.html"], ["Drive Module", "drive-module.html"], ["Events", "events.html"], ["Pricing", "pricing.html"]]],
         ["Company", [["About RLA", "about.html"], ["Journal", "journal.html"], ["Partners", "partners.html"], ["Contact", "contact.html"], ["FAQ", "faq.html"]]],
-        ["Store + legal", [["Merchandise", "merch.html"], ["Stay Driven bag", "product-bag.html"], ["Privacy", "privacy.html"], ["Terms", "terms.html"], ["Register interest", "register.html"]]],
-        ["Connect", [["Instagram ↗", "https://www.instagram.com/racelab.arena?igsh=MWY2ejIybW03NGd5MQ=="], ["Facebook ↗", "https://www.facebook.com/share/1J4wxdN9aW/"], ["TikTok ↗", "https://www.tiktok.com/@racelab.arena"], ["Support the build ↗", "https://buymeacoffee.com/racelabarena"]]]
+        ["Updates + legal", [["Merchandise", "merch.html"], ["Register interest", "register.html"], ["Privacy", "privacy.html"], ["Terms", "terms.html"]]],
+        ["Connect", [["Instagram ↗", "https://www.instagram.com/racelab.arena?igsh=MWY2ejIybW03NGd5MQ=="], ["Facebook ↗", "https://www.facebook.com/share/1J4wxdN9aW/"], ["TikTok ↗", "https://www.tiktok.com/@racelab.arena"]]]
       ];
 
       groups.forEach(function (group) {
@@ -260,109 +257,6 @@
     sections.forEach(function (section) { observer.observe(section); });
   }
 
-  function tierClass(tier) {
-    if (tier === "Race Sponsor") return "tier-sponsor";
-    if (tier === "Upgrade the build") return "tier-upgrade";
-    return "tier-battery";
-  }
-
-  function renderSupporterMessage(container, status, message) {
-    container.replaceChildren();
-    var item = document.createElement("span");
-    item.className = "supporter-loading";
-    item.textContent = message;
-    container.appendChild(item);
-    status.textContent = message;
-  }
-
-  function renderSupporters(container, status, supporters) {
-    container.replaceChildren();
-
-    if (!Array.isArray(supporters) || supporters.length === 0) {
-      renderSupporterMessage(container, status, "No supporters yet — be the first.");
-      return;
-    }
-
-    var fragment = document.createDocumentFragment();
-    supporters.forEach(function (supporter) {
-      var pill = document.createElement("span");
-      var safeName = typeof supporter.username === "string" ? supporter.username.trim() : "Supporter";
-
-      pill.className = "supporter-pill " + tierClass(supporter.tier);
-      pill.textContent = "@" + (safeName || "Supporter");
-      fragment.appendChild(pill);
-    });
-
-    container.appendChild(fragment);
-    status.textContent = supporters.length + " supporters loaded.";
-  }
-
-  function loadSupporters() {
-    var container = document.getElementById("supporters-list");
-    var status = document.getElementById("supporter-status");
-    if (!container || !status) return;
-
-    fetch(SUPPORTERS_ENDPOINT, {
-      method: "GET",
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: "Bearer " + SUPABASE_ANON_KEY
-      }
-    })
-      .then(function (response) {
-        if (!response.ok) throw new Error("Supporter wall request failed");
-        return response.json();
-      })
-      .then(function (supporters) {
-        renderSupporters(container, status, supporters);
-      })
-      .catch(function () {
-        renderSupporterMessage(container, status, "Supporter wall is temporarily unavailable.");
-      });
-  }
-
-  function copyText(value) {
-    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(value);
-
-    return new Promise(function (resolve, reject) {
-      var input = document.createElement("textarea");
-      input.value = value;
-      input.setAttribute("readonly", "");
-      input.style.position = "fixed";
-      input.style.opacity = "0";
-      document.body.appendChild(input);
-      input.select();
-      try {
-        document.execCommand("copy") ? resolve() : reject(new Error("Copy failed"));
-      } catch (error) {
-        reject(error);
-      }
-      input.remove();
-    });
-  }
-
-  function setupShare() {
-    var button = document.querySelector("[data-share]");
-    var status = document.querySelector("[data-share-status]");
-    if (!button || !status) return;
-
-    var url = "https://www.racelabarena.com/";
-    var text = "RaceLab Arena connects simulator controls to real physical RC vehicles through live FPV. Built in Perth.";
-
-    button.addEventListener("click", function () {
-      if (navigator.share) {
-        navigator.share({ title: "RaceLab Arena", text: text, url: url }).catch(function () {});
-        return;
-      }
-
-      copyText(url).then(function () {
-        status.textContent = "RaceLab Arena link copied.";
-      }).catch(function () {
-        status.textContent = "Copy unavailable. Visit racelabarena.com to share.";
-      });
-    });
-  }
-
   function setupAccordions() {
     document.querySelectorAll("[data-accordion-button]").forEach(function (button) {
       var panelId = button.getAttribute("aria-controls");
@@ -407,9 +301,7 @@
     setupMenu();
     setupReveals();
     setupScrollSpy();
-    setupShare();
     setupAccordions();
     setupJournalFilter();
-    loadSupporters();
   });
 })();
