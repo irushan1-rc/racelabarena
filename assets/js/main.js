@@ -122,6 +122,16 @@
       var location = document.createElement("span");
       location.textContent = "In development — Perth, Western Australia";
       identity.appendChild(location);
+      var businessDetails = document.createElement("div");
+      businessDetails.className = "footer-business";
+      var businessEmail = document.createElement("a");
+      businessEmail.href = "mailto:info@racelabarena.com";
+      businessEmail.textContent = "info@racelabarena.com";
+      var businessNumber = document.createElement("span");
+      businessNumber.textContent = "ABN 90 706 045 051";
+      businessDetails.appendChild(businessEmail);
+      businessDetails.appendChild(businessNumber);
+      identity.appendChild(businessDetails);
       top.appendChild(identity);
 
       var groups = [
