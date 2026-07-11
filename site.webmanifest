@@ -1,0 +1,17 @@
+{
+  "name": "RaceLab Arena",
+  "short_name": "RLA",
+  "description": "Simulator-controlled physical RC racing in development in Perth, Western Australia.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070808",
+  "theme_color": "#070808",
+  "icons": [
+    {
+      "src": "assets/images/rla-logo.png",
+      "sizes": "400x266",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
